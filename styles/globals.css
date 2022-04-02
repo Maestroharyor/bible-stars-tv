@@ -1,0 +1,80 @@
+.ant-image-preview-img-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ant-breadcrumb a:hover {
+  color: #df2e2e;
+}
+
+.has_submenu .submenu {
+  visibility: hidden;
+}
+
+.has_submenu:hover .submenu {
+  -webkit-transform: translateY(0);
+  transform: translateY(0) scale(1);
+  visibility: visible;
+  /* display: flex; */
+  opacity: 1;
+}
+
+.has_submenu:hover .icon {
+  transform: rotate(180deg);
+}
+
+/*NextJS Image Component CSS Overiding*/
+.image-container {
+  width: 100%;
+}
+
+.image-container div {
+  position: unset !important;
+}
+
+.image-container .image {
+  object-fit: contain;
+  width: 100% !important;
+  position: relative !important;
+  height: unset !important;
+}
+
+/* Ant Progress Bar */
+.ant-progress-circle.ant-progress-status-success .ant-progress-text {
+  color: #1f1d1a;
+}
+
+/* Audition Options */
+
+.audition-options input:checked + label {
+  background-color: #000;
+}
+
+.audition-options input + label:hover p:first-child,
+.audition-options input:checked + label p:first-child {
+  color: #000;
+}
+
+/* Ant Select */
+#account_type .ant-select-selector, #account_batch .ant-select-selector{
+  background-color: #d2c2ae;
+  border-color: #000;
+  border-radius: 5px;
+  height: 65px;
+}
+
+#account_type .ant-select-selection-placeholder, #account_type .ant-select-selection-item, #account_batch .ant-select-selection-placeholder, #account_batch .ant-select-selection-item {
+    color: black;
+    display: block;
+    margin-top: 11px;
+  }
+
+  /* Swiper Ant Design */
+  .swiper-slide .ant-image{
+    width: 100%;
+  }
+  /* .swiper, .swiper-slide .ant-image-img{
+    height: 550px;
+  } */
+/*Blog Body Content */
