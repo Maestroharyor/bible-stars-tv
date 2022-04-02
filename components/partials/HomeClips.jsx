@@ -15,14 +15,14 @@ function HomeClips() {
   };
   const homeClips = [
     {
-      title: "Bible Stars Intro",
-      link: "https://www.youtube.com/watch?v=jrPbgIhTdDc",
-      id: "jrPbgIhTdDc"
-    },
-    {
       title: "How to Audition",
       link: "https://www.youtube.com/watch?v=6NYg0JxT2p0",
       id: "6NYg0JxT2p0"
+    },
+    {
+      title: "Bible Stars Intro",
+      link: "https://www.youtube.com/watch?v=jrPbgIhTdDc",
+      id: "jrPbgIhTdDc"
     },
     {
       title: "Bible Stars Cash Prize",

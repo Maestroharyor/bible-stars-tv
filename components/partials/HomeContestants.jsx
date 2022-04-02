@@ -39,7 +39,7 @@ function HomeContestants() {
       src: "/images/contestants/ff.jpg",
       name: "Anne Edwards",
       shirt: "1",
-      state: "Kwara State"
+      state: "Kogi State"
     },
     {
       src: "/images/contestants/gg.jpg",
@@ -55,9 +55,9 @@ function HomeContestants() {
     },
     {
       src: "/images/contestants/ii.jpg",
-      name: "Ogunine Precious",
+      name: "Oguine Precious",
       shirt: "2",
-      state: "Benue State"
+      state: "Anambra State"
     },
     {
       src: "/images/contestants/jj.jpg",
