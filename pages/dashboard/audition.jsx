@@ -61,7 +61,7 @@ function DashboardAudition({ auth, books }) {
       url: `${baseUrl}/auditions/start`,
       headers: { Authorization: `Bearer ${auth.token}` }
     })
-      .then((res) => {
+      .then(res => {
         setDeductedFunds(true);
         // console.log("Req 1: ",res)
         return axios({
@@ -70,12 +70,12 @@ function DashboardAudition({ auth, books }) {
           headers: { Authorization: `Bearer ${auth.token}` }
         });
       })
-      .then((res2) => {
+      .then(res2 => {
         setQuestions(res2.data);
         console.log("Req 2: ", res2.data);
         setLoading(false);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
         setLoading(false);
       });
@@ -92,7 +92,7 @@ function DashboardAudition({ auth, books }) {
         data,
         headers: { Authorization: `Bearer ${auth.token}` }
       })
-        .then((res) => {
+        .then(res => {
           if (res.data.status === "right") {
             userNotificationSuccess("Correct", res.data.message);
           } else {
@@ -104,7 +104,7 @@ function DashboardAudition({ auth, books }) {
           setQuestionIndex(1);
           // console.log("Req 1: ",res)
         })
-        .catch((err) => {
+        .catch(err => {
           console.log(err);
           setLoading(false);
         });
@@ -117,7 +117,7 @@ function DashboardAudition({ auth, books }) {
         data,
         headers: { Authorization: `Bearer ${auth.token}` }
       })
-        .then((res) => {
+        .then(res => {
           setFinished(true);
           if (res.data.status === "right") {
             userNotificationSuccess("Correct", res.data.message);
@@ -130,7 +130,7 @@ function DashboardAudition({ auth, books }) {
             headers: { Authorization: `Bearer ${auth.token}` }
           });
         })
-        .then((res2) => {
+        .then(res2 => {
           dispatch(
             loginSuccess({ ...res2.data, token: auth.token, id: auth.id })
           );
@@ -139,7 +139,7 @@ function DashboardAudition({ auth, books }) {
             setLoading(false);
           }, 1000);
         })
-        .catch((err) => {
+        .catch(err => {
           console.log(err);
           setLoading(false);
         });
@@ -167,9 +167,12 @@ function DashboardAudition({ auth, books }) {
     return () => clearInterval(timerInterval);
   });
 
-  useEffect(() => {
-    console.log("Changed");
-  }, [questionIndex]);
+  useEffect(
+    () => {
+      console.log("Changed");
+    },
+    [questionIndex]
+  );
 
   const handleAnswerInput = (e, answer) => {
     console.log("Option: ", answer);
@@ -192,7 +195,7 @@ function DashboardAudition({ auth, books }) {
   // ];
   return (
     <ContestantAuthLayout>
-      {finished && (
+      {finished &&
         <div className="bg-black fixed z-[1000] w-full h-full flex flex-col gap-4 items-center justify-center text-6xl text-brand-red opacity-95 lg:mr-10">
           <FaCheck className="animate-ping" />
           <p className="text-2xl text-white">
@@ -206,15 +209,14 @@ function DashboardAudition({ auth, books }) {
               {"To be eligible for selection, 20 points is required"}
             </p>
           </div>
-        </div>
-      )}
+        </div>}
       <DashboardLayout title={"Audition"} breadcrumb={breadCrumbData}>
         {/* <button className="bg-brand-red text-white hover:bg-red-700 px-5 py-3 rounded hover:scale-110 transition ease-in-out duration-300 text-lg w-[300px] flex items-center justify-center gap-5" onClick={getQuestions}>
             <span>Continue</span>
             <FaArrowRight />
           </button> */}
 
-        {auth.my_stats.wallet_balance < 500 && (
+        {auth.my_stats.wallet_balance < 500 &&
           <div className="pt-52 pb-60 flex flex-col gap-5 items-center justify-center mx-auto max-w-[900px]">
             <h2 className="text-3xl lg:text-5xl font-bold text-center leading-10">
               {"You don't have enough Money to Take an Audition"}
@@ -228,144 +230,146 @@ function DashboardAudition({ auth, books }) {
                 Fund Wallet Now
               </a>
             </Link>
-          </div>
-        )}
+          </div>}
 
-        {auth.my_stats.wallet_balance >= 500 && !start && (
-          <div className="pt-52 pb-60 flex flex-col gap-5 items-center justify-center mx-auto max-w-[900px]">
+        {auth.my_stats.wallet_balance >= 500 &&
+          !start &&
+          <div className="pt-16 pb-44 flex flex-col gap-5 items-center justify-center mx-auto max-w-[900px]">
             <h2 className="text-3xl lg:text-5xl font-bold text-center leading-10">
               Start your Audition
             </h2>
             <p className="text-xl text-center">
-              Ut incididunt ex adipisicing duis. Deserunt anim ut elit voluptate
-              duis minim amet officia laboris. Non cupidatat commodo dolore
-              minim officia laborum reprehenderit quis. Ad veniam est veniam
-              voluptate. Pariatur ea ad est laboris adipisicing deserunt
-              cupidatat proident quis occaecat Lorem veniam cillum laborum.
+              Search/Select a book for bible to begin.
             </p>
+            <ul className="text-xl list-disc list-inside mx-auto max-w-[500px] mb-5">
+              <li>It is open to persons of all age group.</li>
+              <li>You can answer questions from any book of your choice three
+                times, then you can answer from other books.
+              </li>
+              <li>You can cross from one batch to another.</li>
+            </ul>
             <div
               className="flex flex-col flex-1 gap-2 text-lg"
               id="account_type"
             >
               <Select
+              showSearch
                 placeholder="Select Book of Bible"
                 size="large"
                 style={{ width: 300 }}
-                onChange={(value) => {
+                onChange={value => {
                   setBook(value);
                   setContinueButton(true);
                 }}
               >
-                {books.map((book) => (
+                {books.map(book =>
                   <Option value={book} key={book}>
                     {Capitalize(book)}
                   </Option>
-                ))}
+                )}
               </Select>
             </div>
 
-            {continueButton && (
+            {continueButton &&
               <button
                 className="bg-brand-red text-white hover:bg-red-700 px-5 py-3 rounded hover:scale-110 transition ease-in-out duration-300 text-lg w-[300px] flex items-center justify-center gap-5"
                 onClick={getQuestions}
               >
                 <span>Continue</span>
                 <FaArrowRight />
-              </button>
-            )}
-          </div>
-        )}
+              </button>}
+          </div>}
 
-        {auth.my_stats.wallet_balance >= 500 && start && loading && (
+        {auth.my_stats.wallet_balance >= 500 &&
+          start &&
+          loading &&
           <div className="pt-56 pb-64 flex flex-col gap-5 items-center justify-center mx-auto max-w-[900px] text-4xl lg:text-7xl">
             <FaCircleNotch className="animate-spin" />
             <p className="text-2xl">Loading...</p>
-          </div>
-        )}
+          </div>}
 
         {auth.my_stats.wallet_balance >= 500 &&
           start &&
           questions.length > 0 &&
-          !loading && (
-            <div className="max-w-[1100px] mx-auto flex flex-col gap-10 pt-10 pb-28">
-              <div>
-                <div className="flex justify-between">
-                  <h1 className="text-3xl font-bold">Audition</h1>
-                  <h2 className="text-2xl font-bold">Question 1</h2>
-                </div>
-                <Progress
-                  percent={questionIndex == 0 ? 50 : 100}
-                  strokeLinecap="square"
-                  strokeColor={"#DF2E2E"}
-                  trailColor={"#f8f4f0"}
-                />
+          !loading &&
+          <div className="max-w-[1100px] mx-auto flex flex-col gap-10 pt-10 pb-28">
+            <div>
+              <div className="flex justify-between">
+                <h1 className="text-3xl font-bold">Audition</h1>
+                <h2 className="text-2xl font-bold">Question 1</h2>
               </div>
+              <Progress
+                percent={questionIndex == 0 ? 50 : 100}
+                strokeLinecap="square"
+                strokeColor={"#DF2E2E"}
+                trailColor={"#f8f4f0"}
+              />
+            </div>
 
-              <div>
-                <p className="text-6xl font-bold text-center">
-                  {Capitalize(questions[questionIndex].question)}
-                </p>
-              </div>
+            <div>
+              <p className="text-6xl font-bold text-center">
+                {Capitalize(questions[questionIndex].question)}
+              </p>
+            </div>
 
-              {/* Timer */}
-              <div className="flex items-center justify-center">
-                <Progress
-                  type="circle"
-                  size="small"
-                  percent={100 * (timer / 30)}
-                  format={(percent) => Math.round((percent / 100) * 30)}
-                  strokeColor={"#DF2E2E"}
-                  strokeWidth={12}
-                  showInfo={true}
-                />
-              </div>
+            {/* Timer */}
+            <div className="flex items-center justify-center">
+              <Progress
+                type="circle"
+                size="small"
+                percent={100 * (timer / 30)}
+                format={percent => Math.round(percent / 100 * 30)}
+                strokeColor={"#DF2E2E"}
+                strokeWidth={12}
+                showInfo={true}
+              />
+            </div>
 
-              <div>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 justify-center audition-options mx-auto max-w-[900px]">
-                  {questions[questionIndex].answers.map((answer, i) => (
-                    <div key={answer}>
-                      <input
-                        type="radio"
-                        value={answer}
-                        id={answer}
-                        name="options"
-                        onChange={(e) => {
-                          handleAnswerInput(e, answer);
-                        }}
-                        className="hidden"
-                      />
-                      <label
-                        htmlFor={answer}
-                        className={`block rounded bg-blue-900 p-5 shadow shadow-gray-900 text-white text-center w-full sm:w-[150px] sm:h-[150px] flex flex-col gap-3 items-center justify-center cursor-pointer transition ease-in-out duration-300 hover:bg-black hover:scale-110`}
-                      >
-                        <p className="bg-white text-blue-900 rounded-full px-4 py-2 text-xl sm:text-2xl font-bold">
-                          {answerIndex[i]}
-                        </p>
-                        <p className="text-xl sm:text-2xl font-bold">
-                          {answer}
-                        </p>
-                      </label>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="flex items-center justify-center">
-                <button
-                  className="bg-green-600 text-white hover:bg-green-800 px-5 py-3 rounded hover:scale-110 transition ease-in-out duration-300 text-lg w-[300px] flex items-center justify-center gap-5"
-                  onClick={answerQuestion}
-                >
-                  <span>Submit</span>
-                  <FaCheck />
-                </button>
+            <div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 justify-center audition-options mx-auto max-w-[900px]">
+                {questions[questionIndex].answers.map((answer, i) =>
+                  <div key={answer}>
+                    <input
+                      type="radio"
+                      value={answer}
+                      id={answer}
+                      name="options"
+                      onChange={e => {
+                        handleAnswerInput(e, answer);
+                      }}
+                      className="hidden"
+                    />
+                    <label
+                      htmlFor={answer}
+                      className={`block rounded bg-blue-900 p-5 shadow shadow-gray-900 text-white text-center w-full sm:w-[150px] sm:h-[150px] flex flex-col gap-3 items-center justify-center cursor-pointer transition ease-in-out duration-300 hover:bg-black hover:scale-110`}
+                    >
+                      <p className="bg-white text-blue-900 rounded-full px-4 py-2 text-xl sm:text-2xl font-bold">
+                        {answerIndex[i]}
+                      </p>
+                      <p className="text-xl sm:text-2xl font-bold">
+                        {answer}
+                      </p>
+                    </label>
+                  </div>
+                )}
               </div>
             </div>
-          )}
+            <div className="flex items-center justify-center">
+              <button
+                className="bg-green-600 text-white hover:bg-green-800 px-5 py-3 rounded hover:scale-110 transition ease-in-out duration-300 text-lg w-[300px] flex items-center justify-center gap-5"
+                onClick={answerQuestion}
+              >
+                <span>Submit</span>
+                <FaCheck />
+              </button>
+            </div>
+          </div>}
       </DashboardLayout>
     </ContestantAuthLayout>
   );
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return state;
 };
 

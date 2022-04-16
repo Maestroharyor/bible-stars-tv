@@ -6,19 +6,19 @@ import YouTube from "react-youtube";
 
 function HomeClips() {
   const opts = {
-    height: "200",
-    width: "300"
+    height: "150",
+    width: "250"
     // playerVars: {
     //   // https://developers.google.com/youtube/player_parameters
     //   autoplay: 1,
     // },
   };
   const homeClips = [
-    {
-      title: "How to Audition",
-      link: "https://www.youtube.com/watch?v=6NYg0JxT2p0",
-      id: "6NYg0JxT2p0"
-    },
+    // {
+    //   title: "How to Audition",
+    //   link: "https://www.youtube.com/watch?v=6NYg0JxT2p0",
+    //   id: "6NYg0JxT2p0"
+    // },
     {
       title: "Bible Stars Intro",
       link: "https://www.youtube.com/watch?v=jrPbgIhTdDc",
@@ -49,7 +49,7 @@ function HomeClips() {
     <div className="lg:py-5 lg:px-3">
       <h3 className="mb-5 text-2xl font-bold">Catch a glimpse of the show</h3>
       <div className="bg-black px-3 py-5 lg:rounded">
-        <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 place-items-center">
+        <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 place-items-center">
           {homeClips.map((clip) => (
             <div className="" key={clip.name}>
               {clip.id !== "" ? (
