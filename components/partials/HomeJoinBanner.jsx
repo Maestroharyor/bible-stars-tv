@@ -6,8 +6,8 @@ import YouTube from "react-youtube";
 
 function HomeJoinBanner({ auth }) {
   const opts = {
-    height: "389",
-    width: "469"
+    height: "150",
+    width: "250"
     // playerVars: {
     //   // https://developers.google.com/youtube/player_parameters
     //   autoplay: 1,

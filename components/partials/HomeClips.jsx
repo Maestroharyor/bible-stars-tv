@@ -70,9 +70,9 @@ function HomeClips() {
                   <MdVideocam className="mr-2" />
                 </div>
 
-                <p className="text-white text-xs uppercase flex-1">
+                {/* <p className="text-white text-xs uppercase flex-1">
                   {clip.title}{" "}
-                </p>
+                </p> */}
               </div>
             </div>
           ))}
