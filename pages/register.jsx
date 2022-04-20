@@ -1,21 +1,24 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 import axios from "axios";
-import Cookies from 'universal-cookie';
-import {connect, useDispatch} from 'react-redux';
+import Cookies from "universal-cookie";
+import { connect, useDispatch } from "react-redux";
 import { FaArrowAltCircleRight, FaCircleNotch } from "react-icons/fa";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { Select, notification } from "antd";
-import {loginSuccess} from '../store/auth/action'
+import { Select, notification, Checkbox } from "antd";
+import { loginSuccess } from "../store/auth/action";
 import AccountLayout from "../components/layouts/AccountLayout";
 import { baseUrl } from "../server/index";
-import {userNotificationSuccess, userNotificationFailure} from '../functions/notification';
+import {
+  userNotificationSuccess,
+  userNotificationFailure
+} from "../functions/notification";
 
 const { Option } = Select;
 
-function Register({auth}) {
+function Register({ auth }) {
   // console.log(auth);
   const router = useRouter();
   const dispatch = useDispatch();
@@ -39,8 +42,9 @@ function Register({auth}) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [formChecked, setFormChecked] = useState(true);
 
-  const handleForm = (e) => {
+  const handleForm = e => {
     e.preventDefault();
     console.log("Submitted");
 
@@ -52,49 +56,61 @@ function Register({auth}) {
       lastname: "",
       password: "",
       confirmPassword: ""
-    })
+    });
 
-    const data = 
-      {
-        firstname,
-        lastname,
-        username,
-        gender,
-        email,
-        user_role: accountType,
-        batch,
-        password
-      }
-    
+    const data = {
+      firstname,
+      lastname,
+      username,
+      gender,
+      email,
+      user_role: accountType,
+      batch,
+      password
+    };
+
     // console.log(data)
 
-    if (password === confirmPassword) {
-      setLoading(true)
+    if (password === confirmPassword && formChecked) {
+      setLoading(true);
       axios
         .post(`${baseUrl}/auth/signup`, data)
-        .then((res) => {
-          setLoading(false)
-          console.log(res)
-          const {data} = res
-          dispatch(loginSuccess(data))
-          userNotificationSuccess("Account Created", "Redirecting you to dashboard")
-          router.push('/dashboard')
+        .then(res => {
+          setLoading(false);
+          console.log(res);
+          const { data } = res;
+          dispatch(loginSuccess(data));
+          userNotificationSuccess(
+            "Account Created",
+            "Redirecting you to dashboard"
+          );
+          router.push("/dashboard");
         })
-        .catch((err) => {
-          setLoading(false)
+        .catch(err => {
+          setLoading(false);
           // console.log({err})
-          if(err.response){
+          if (err.response) {
             setErrors(err.response.data.errors);
           }
           // console.log(err.response.data.errors)
           // console.log(errors)
-          userNotificationFailure("An error occured while creating your account")
+          userNotificationFailure(
+            "An error occured while creating your account"
+          );
         });
     } else {
-      setErrors({
-        password: "Password and Confirm Password are not the same",
-        confirmPassword: "Password and Confirm Password are not the same"
-      });
+      if (password !== confirmPassword) {
+        setErrors({
+          password: "Password and Confirm Password are not the same",
+          confirmPassword: "Password and Confirm Password are not the same"
+        });
+      }
+
+      if (!formChecked) {
+        userNotificationFailure(
+          "Please accept the terms and conditions before registering"
+        );
+      }
     }
   };
   return (
@@ -129,7 +145,7 @@ function Register({auth}) {
                     className="bg-brand-chalk w-full py-1 text-lg text-black font-bold focus:outline-none"
                     placeholder="John"
                     required
-                    onChange={(e) => setFirstname(e.target.value)}
+                    onChange={e => setFirstname(e.target.value)}
                   />
                 </div>
                 <div className="rounded flex flex-col border border-gray-800 rounded flex-1 px-3">
@@ -141,7 +157,7 @@ function Register({auth}) {
                     className="bg-brand-chalk w-full py-1 text-lg text-black font-bold focus:outline-none"
                     placeholder="Doe"
                     required
-                    onChange={(e) => setLastname(e.target.value)}
+                    onChange={e => setLastname(e.target.value)}
                   />
                 </div>
               </div>
@@ -154,14 +170,13 @@ function Register({auth}) {
                     name=""
                     id=""
                     className="bg-brand-chalk w-full py-1 text-lg text-black font-bold focus:outline-none"
-                    onChange={(e) => setUsername(e.target.value)}
+                    onChange={e => setUsername(e.target.value)}
                   />
                 </div>
-                {errors.username && (
+                {errors.username &&
                   <p className="pl-3 mt-1 text-lg text-red-700">
                     {errors.username}
-                  </p>
-                )}
+                  </p>}
               </div>
               <div>
                 <div className="rounded flex flex-col border border-gray-800 rounded flex-1 px-3 text-lg">
@@ -173,14 +188,13 @@ function Register({auth}) {
                     className="bg-brand-chalk w-full py-1 text-lg text-black font-bold focus:outline-none"
                     placeholder="Johndoe@mail.com"
                     required
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={e => setEmail(e.target.value)}
                   />
                 </div>
-                {errors.email && 
+                {errors.email &&
                   <p className="pl-3 mt-1 text-lg text-red-700">
                     {errors.email}
-                  </p>
-                }
+                  </p>}
               </div>
 
               <div>
@@ -193,7 +207,7 @@ function Register({auth}) {
                     placeholder="Select Gender"
                     size="large"
                     // style={{ width: 120 }}
-                    onChange={(value) => {
+                    onChange={value => {
                       setGender(value);
                     }}
                   >
@@ -201,11 +215,10 @@ function Register({auth}) {
                     <Option value="female">Female</Option>
                   </Select>
                 </div>
-                {errors.gender && 
+                {errors.gender &&
                   <p className="pl-3 mt-1 text-lg text-red-700">
                     {errors.gender}
-                  </p>
-                }
+                  </p>}
               </div>
 
               <div>
@@ -218,7 +231,7 @@ function Register({auth}) {
                     placeholder="Select Account Type"
                     size="large"
                     // style={{ width: 120 }}
-                    onChange={(value) => {
+                    onChange={value => {
                       setAccountType(value);
                     }}
                   >
@@ -228,7 +241,7 @@ function Register({auth}) {
                 </div>
               </div>
 
-              {accountType == "contestant" && (
+              {accountType == "contestant" &&
                 <div>
                   <div
                     className="flex flex-col flex-1 gap-2 text-lg"
@@ -239,18 +252,19 @@ function Register({auth}) {
                       placeholder="Select Batch"
                       size="large"
                       // style={{ width: 120 }}
-                      onChange={(value) => {
+                      onChange={value => {
                         setBatch(value);
                       }}
                     >
-                      <Option value="a" disabled>Batch A</Option>
+                      <Option value="a" disabled>
+                        Batch A
+                      </Option>
                       <Option value="b">Batch B</Option>
                       <Option value="c">Batch C</Option>
                       <Option value="d">Batch D</Option>
                     </Select>
                   </div>
-                </div>
-              )}
+                </div>}
 
               <div className="relative">
                 <div className=" rounded flex flex-col border border-gray-800 rounded flex-1 px-3 text-lg">
@@ -261,7 +275,7 @@ function Register({auth}) {
                     id=""
                     className="bg-brand-chalk w-full py-1 text-lg text-black font-bold focus:outline-none"
                     required
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={e => setPassword(e.target.value)}
                   />
                 </div>
                 <button
@@ -271,11 +285,10 @@ function Register({auth}) {
                 >
                   {showPass ? <AiFillEyeInvisible /> : <AiFillEye />}
                 </button>
-                {errors.password && (
+                {errors.password &&
                   <p className="pl-3 mt-1 text-lg text-red-700">
                     {errors.password}
-                  </p>
-                )}
+                  </p>}
               </div>
 
               <div className="relative">
@@ -287,7 +300,7 @@ function Register({auth}) {
                     id=""
                     className="bg-brand-chalk w-full py-1 text-lg text-black font-bold focus:outline-none"
                     required
-                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    onChange={e => setConfirmPassword(e.target.value)}
                   />
                 </div>
                 <button
@@ -297,24 +310,38 @@ function Register({auth}) {
                 >
                   {showConfirmPass ? <AiFillEyeInvisible /> : <AiFillEye />}
                 </button>
-                {errors.confirmPassword && (
+                {errors.confirmPassword &&
                   <p className="pl-3 mt-1 text-lg text-red-700">
                     {errors.confirmPassword}
+                  </p>}
+              </div>
+              <div>
+                <Checkbox
+                  checked={formChecked}
+                  onChange={() => {
+                    setFormChecked(!formChecked);
+                  }}
+                >
+                  <p className="text-xl">
+                    I hereby agree to the{" "}
+                    <Link href={"/terms-and-condition"} passHref>
+                      <a className="text-gray-800 underline hover:text-brand-red hover:underline">
+                        Terms and Conditions
+                      </a>
+                    </Link>{" "}
                   </p>
-                )}
+                </Checkbox>
               </div>
 
               <div>
-                {!loading ? (
-                  <button className="w-full bg-brand-red hover:bg-red-700 transition duration-300 ease-in-out py-3 px-3 inline-flex justify-center items-center text-white text-lg font-bold gap-4">
-                    <span>Sign Up</span> <FaArrowAltCircleRight />
-                  </button>
-                ) : (
-                  <div className="w-full bg-brand-red py-3 px-3 inline-flex justify-center items-center text-white text-lg font-bold gap-4 opacity-60 cursor-progress">
-                    <span>Signing up..</span>{" "}
-                    <FaCircleNotch className="animate-spin" />
-                  </div>
-                )}
+                {!loading
+                  ? <button className="w-full bg-brand-red hover:bg-red-700 transition duration-300 ease-in-out py-3 px-3 inline-flex justify-center items-center text-white text-lg font-bold gap-4">
+                      <span>Sign Up</span> <FaArrowAltCircleRight />
+                    </button>
+                  : <div className="w-full bg-brand-red py-3 px-3 inline-flex justify-center items-center text-white text-lg font-bold gap-4 opacity-60 cursor-progress">
+                      <span>Signing up..</span>{" "}
+                      <FaCircleNotch className="animate-spin" />
+                    </div>}
               </div>
             </form>
 
@@ -346,7 +373,7 @@ function Register({auth}) {
   );
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return state;
 };
 
