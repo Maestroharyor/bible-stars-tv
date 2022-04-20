@@ -25,9 +25,13 @@ function Mainfooter({auth}) {
             link: '/register'
         },
         {
-            name: 'Watch',
-            link: '/watch'
+            name: 'Terms and Conditions',
+            link: '/terms-and-conditions'
         },
+        // {
+        //     name: 'Watch',
+        //     link: '/watch'
+        // },
     ]
     const loggedInLinks = [
         {
@@ -47,8 +51,8 @@ function Mainfooter({auth}) {
             link: '/dashboard'
         },
         {
-            name: 'Watch',
-            link: '/watch'
+            name: 'Terms and Conditions',
+            link: '/terms-and-conditions'
         },
     ]
     return (

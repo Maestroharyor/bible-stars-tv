@@ -9,14 +9,14 @@ const Terms = () => {
       <div className="py-20 max-w-[1070px] mx-auto px-5">
         <h2>DISCLAIMER NOTES AND TERMS</h2>
         <p>
-          The BIBLE STARS TV SHOW DISCLAIMER, TERMS AND CONDITIONS (or simply,
+          {`The BIBLE STARS TV SHOW DISCLAIMER, TERMS AND CONDITIONS (or simply,
           the disclaimer notes and terms) is a terms and regulations created by
           BIBLE STARS MANAGEMENTS for potential Housemates, participants and
           contestants on the TV Show, the disclaimer notes and terms takes a
           major part in the show, and it can affect a house-mate’s participant,
           contestants 'stay inside the house if he or she violates one or more
           of the terms, as each violation results in a corresponding
-          termination.
+          termination.`}
         </p>
         <h2>INTERPRETATION AND DEFINITIONS</h2>
         <h3>INTERPRETATION</h3>
@@ -336,7 +336,7 @@ const Terms = () => {
           performance or reliability standards.
         </p>
         <p>
-          Without limiting the foregoing, neither the Bible Star Managements nor
+          {`Without limiting the foregoing, neither the Bible Star Managements nor
           any of the Bible Star Managements’ producer makes any representation
           of any kind, express or implied: (i) as to the operation or
           availability of the TV Show, or the information, content, and
@@ -345,7 +345,7 @@ const Terms = () => {
           accuracy of any information or content provided through the TV Show;
           or (iv) that the TV Show, its servers, the content, or e-mails sent
           from or on behalf of the Bible Star Managements are free of vile
-          comments, or other harmful comments.
+          comments, or other harmful comments.`}
         </p>
         <h3>TERMINATION</h3>
         <p>
@@ -361,12 +361,12 @@ const Terms = () => {
 
         <h3>LIMITATION OF LIABILITY</h3>
         <p>
-          Notwithstanding any personality/character damages that You might
+          {`Notwithstanding any personality/character damages that You might
           incur, the entire liability of the Bible Star Managements and any of
           its producers under any provision of this Terms and Your exclusive
           remedy for all of the foregoing shall be limited to the amount
           actually paid by You through the TV Show or N1000: 00 (One Thousand
-          Naira) if You haven’t purchased anything through the TV Show.
+          Naira) if You haven’t purchased anything through the TV Show.`}
         </p>
         <p>
           To the maximum extent permitted by applicable law, in no event shall
@@ -414,11 +414,11 @@ const Terms = () => {
         <p>
           <span className="block">Waiver</span>
           <span>
-            Except as provided herein, the failure to exercise a right or to
+            {`Except as provided herein, the failure to exercise a right or to
             require performance of an obligation under this Terms shall not
             effect a party’s ability to exercise such right or require such
             performance at any time thereafter nor shall be the waiver of a
-            breach constitute a waiver of any subsequent breach.
+            breach constitute a waiver of any subsequent breach.`}
           </span>
         </p>
         <h3>TRANSLATION INTERPRETATION</h3>
@@ -429,11 +429,11 @@ const Terms = () => {
         </p>
         <h3>CHANGES TO THESE TERMS AND CONDITIONS</h3>
         <p>
-          We reserve the right, at Our sole discretion, to modify or replace
+          {`We reserve the right, at Our sole discretion, to modify or replace
           these Terms at any time. If a revision is material We will make
           reasonable efforts to provide at least 15 days’ notice prior to any
           new terms taking effect. What constitutes a material change will be
-          determined at Our sole discretion.
+          determined at Our sole discretion.`}
         </p>
         <p>
           By continuing to access or register on Our TV Show after those
