@@ -24,47 +24,47 @@ const Terms = () => {
           The words of which the initial letter is capitalized have meanings
           defined under the following conditions. The following definitions
           shall have the same meaning regardless of whether they appear in
-          singular or in plural. Definitions For the purposes of these Terms and
+          singular or in plural. <br /><b>Definitions</b> <br /> For the purposes of these Terms and
           Conditions:
         </p>
         <ol className="list-decimal list-inside text-[1.2rem] leading-[2.3rem] mb-5">
           <li>
-            Affiliate means an entity that controls, is controlled by or is
+            <strong>Affiliate</strong> means an entity that controls, is controlled by or is
             under common control with a Bible Star Managements.
           </li>
-          <li>House-mates refers to: contestants</li>
+          <li><strong>House-mates</strong> refers to: contestants</li>
           <li>
-            Device means any device that can access the TV Show such as a
+            <strong>Device</strong> means any device that can access the TV Show such as a
             computer, a cellphone or a digital tablet.
           </li>
           <li>
-            Feedback means feedback, innovations or suggestions sent by viewers
+            <strong>Feedback</strong> means feedback, innovations or suggestions sent by viewers
             regarding the attributes, performance or features of our TV Show.
           </li>
           <li>
-            Promotions refer to advertisement endorsements, contests or other
+            <strong>Promotions</strong> refer to advertisement endorsements, contests or other
             promotions offered through the TV Show.
           </li>
-          <li>TV Show refers to the Website.</li>
+          <li><strong>TV Show</strong> {`refers to the refers to the activities of the Housemates and contestant which is reproduce via every electronic media not limited to online and offline publication of the TV Show on all means of media including the Bible Stars Management’s webpage, TV Channel, every other Social Media outreach.`}</li>
           <li>
-            Terms and Conditions (also referred as “Terms”) mean these Terms and
+            <strong>Terms and Conditions</strong> (also referred as “Terms”) mean these Terms and
             Conditions that form the entire agreement between You and the Bible
             Star Managements regarding the participation in the T V show.
           </li>
           <li>
-            Third-party Social Media TV Show means any TV Shows or content
+            <strong>Third-party Social Media TV Show</strong> means any TV Shows or content
             (including data, information, products or TV Shows) provided by a
             third-party that may be displayed, included or made available by the
             Show.
           </li>
           <li>
-            Website refers to Reality Blurred, accessible from{" "}
+            <strong>Bible Stars Official Website</strong> refers to Reality Blurred, accessible from{" "}
             <a href="https://www.biblestarstvshow.com/">
               https://www.biblestarstvshow.com/
             </a>
           </li>
           <li>
-            You means the individual(s) accessing or registering with the
+            <strong>You</strong> mean the individual(s) accessing or registering with the
             intention to participate in the TV show, or in the Bible Star
             Managements, or other legal entity on behalf of which such
             individual is accessing or using the TV Show, as applicable.
@@ -84,10 +84,7 @@ const Terms = () => {
         </p>
         <ul className="pl-5 list-style-none text-[1.2rem] leading-[2.3rem] mb-5 flex flex-col gap-5">
           <li>
-            Your access to register for the TV Show is conditioned on Your
-            acceptance of and compliance with these Terms and Conditions. These
-            Terms and Conditions apply to all visitors to the website, registers
-            and others who access or register in the TV Show.
+          Your access to register for the TV Show is conditioned on Your acceptance of and compliance with these Terms and Conditions. These Terms and Conditions apply to all visitors to the website, registers and others who access or register in the TV Show.
           </li>
           <li>
             By accessing or registering in the TV Show You agree to be bound by
@@ -402,7 +399,7 @@ const Terms = () => {
         </p>
         <h3>SEVERABILITY AND WAIVER</h3>
         <p>
-          <span className="block">Severability</span>
+          <span className="block italic">Severability</span>
           <span>
             If any provision of these Terms is held to be unenforceable or
             invalid, such provision will be changed and interpreted to
@@ -412,7 +409,7 @@ const Terms = () => {
           </span>
         </p>
         <p>
-          <span className="block">Waiver</span>
+          <span className="block italic">Waiver</span>
           <span>
             {`Except as provided herein, the failure to exercise a right or to
             require performance of an obligation under this Terms shall not
