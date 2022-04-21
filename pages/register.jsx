@@ -324,7 +324,7 @@ function Register({ auth }) {
                 >
                   <p className="text-xl">
                     I hereby agree to the{" "}
-                    <Link href={"/terms-and-condition"} passHref>
+                    <Link href={"/terms-and-conditions"} passHref>
                       <a className="text-gray-800 underline hover:text-brand-red hover:underline">
                         Terms and Conditions
                       </a>

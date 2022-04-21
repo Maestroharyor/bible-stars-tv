@@ -470,10 +470,10 @@ const Terms = () => {
             line-height: 2.3rem;
           }
           h2 {
-            font-size: 3rem;
+            font-size: 2.5rem;
           }
           h3 {
-            font-size: 2.5rem;
+            font-size: 2rem;
           }
         `}
       </style>
